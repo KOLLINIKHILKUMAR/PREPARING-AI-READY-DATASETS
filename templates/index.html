@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css" />
+    <style>
+        .main{
+            margin: 0%;
+            padding: 0%;
+            background-color: #dee6ed;
+        }
+        .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: #dee6ed;
+        }
+
+        .form-card {
+        margin-top: 60px;
+        padding: 30px;
+        border: 3.5px solid #2f3d7e;
+        border-radius: 15px;
+        background-color: #eef0f3;
+        box-shadow: 8px 13px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .step {
+        display: none;
+        height: 300px;
+        width: 500px;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: transparent;
+        padding: 20px;
+        box-sizing: border-box;
+        }
+
+        .step .text
+        {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: -3vh;
+        color: #000000;
+        font-size: larger;
+        }
+        
+        progress {
+        width: 100%;
+        height: 15px;
+        margin-bottom: 20px;
+        }
+
+        progress::-webkit-progress-bar {
+        background-color: #ffffff;
+        border-radius: 5px;
+        }
+
+        progress::-webkit-progress-value {
+        background-color: #007bff;
+        border-radius: 5px;
+        }
+
+        progress::-moz-progress-bar {
+        background-color: #007bff;
+        border-radius: 5px;
+        }
+        .fbuttonn {
+            align-items: center;
+            text-align: center;
+            width:fit-content;
+            margin-top: 10%;
+            /* margin-left: 18%; */
+            float: left;
+            border-radius: 10px;
+            height: 34px;
+            background-color: #dee6ed;
+            color: black;
+            border: 1.5px solid rgb(0, 0, 0);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden; 
+        }
+        .delimiter{
+            float: left;
+            font-weight: bold;
+            line-height: 20px;
+            margin-left: -24vw;
+            margin-top: 18%;
+            color: #000000;
+        }
+        .name{
+            float: left;
+            text-align: center;
+            margin-top: 13%;
+            color: #ffffff;
+        }
+
+        .checkbox-group{
+            margin-left: -13vw;
+            margin-top: 1vh;
+        }
+        .checkbox {
+        align-items: center;
+        margin-bottom: 11px;
+        font-size: 16px;
+        line-height: 1.5;
+        }
+
+        .checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        }
+
+        .checkmark {
+        display: inline-block;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        margin-right: 10px;
+        }
+
+        .checkbox:hover input ~ .checkmark {
+        background-color: #ccc;
+        }
+
+        .checkbox input:checked ~ .checkmark {
+        background-color: #2196F3;
+        border-color: #2196F3;
+        }
+
+        .checkmark:after {
+        content: "";
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        }
+
+        .checkbox input:checked ~ .checkmark:after {
+        display: block;
+        }
+
+        .label-text {
+        cursor: pointer;
+        }
+
+        .radio-group {
+            margin-left: -23vw;
+            margin-top: 1vh;
+        }
+
+        .radio {
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1;
+        user-select: none;
+        }
+
+        .radio input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+        }
+
+        .checkmarkk {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border: 1px solid #aaa;
+        border-radius: 50%;
+        }
+
+        .radio:hover input ~ .checkmarkk {
+        background-color: #ccc;
+        }
+
+        .radio input:checked ~ .checkmarkk {
+        background-color: #2196F3;
+        border-color: #2196F3;
+        }
+
+        .checkmarkk:after {
+        content: "";
+        position: absolute;
+        display: none;
+        }
+
+        .radio input:checked ~ .checkmarkk:after {
+        display: block;
+        }
+
+        .radio .checkmarkk:after {
+        top: 4px;
+        left: 4px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #2196F3;
+        }
+
+        .class-group {
+
+        margin-left: 20vw;
+        margin-top: -5vh;
+        }
+
+        .radioo {
+        margin-left: 12vw;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 1;
+        user-select: none;
+        }
+
+        .radioo input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+        }
+
+        .checkmarkkk {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border: 1px solid #aaa;
+        border-radius: 50%;
+        }
+
+        .radioo:hover input ~ .checkmarkkk {
+        background-color: #ccc;
+        }
+
+        .radioo input:checked ~ .checkmarkkk {
+        background-color: #2196F3;
+        border-color: #2196F3;
+        }
+
+        .checkmarkkk:after {
+        content: "";
+        position: absolute;
+        display: none;
+        }
+
+        .radioo input:checked ~ .checkmarkkk:after {
+        display: block;
+        }
+
+        .radioo .checkmarkkk:after {
+        top: 4px;
+        left: 4px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #2196F3;
+        }
+
+        .button-container 
+        {
+        position: absolute;
+        bottom: 3vh;
+        left: 50%;
+        transform: translateX(-50%);
+        }
+
+        .prevBtn {
+        background-color: #ffffff;
+        color:rgb(0, 0, 0);
+        border: 2px solid black;
+        font-size: larger;
+        border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-right: 10px;
+        }
+
+        .nextBtn {
+        background-color: white;
+        color:black;
+        border: 2px solid black;
+        font-size: larger;
+        border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-left:25vw;   
+        float: right;
+        }
+
+        .submit {
+        background-color: white;
+        color:black;
+        border: 2px solid black;
+        font-size: larger;
+        border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-left:25vw;   
+        float: right;
+        }
+
+        .nextBtn:hover {
+        background-color: rgb(0, 0, 0);
+        color:rgb(255, 255, 255);
+        border: 2px solid black;
+        }
+
+        .prevBtn:hover{
+        background-color: rgb(0, 0, 0);
+        color:rgb(255, 255, 255);
+        border: 2px solid black;
+        }
+
+        .submit:hover{
+        background-color: rgb(0, 0, 0);
+        color:rgb(255, 255, 255);
+        border: 2px solid black;
+        }
+
+    </style>
+</head>
+<body class="main">
+   <script>
+		    function fileValidation() {
+			var fileInput =
+				document.getElementById('file');
+			
+			var filePath = fileInput.value;
+		        if(document.getElementById('file').files[0].size == 0){
+				alert('dfjdfkw');
+				return false;
+				} 
+			var allowedExtensions =
+					/(\.jpg|\.jpeg|\.png|\.txt|\.pdf)$/i;
+			
+			if (!allowedExtensions.exec(filePath)) {
+				alert('Invalid file type');
+				fileInput.value = '';
+				return false;
+			}
+			else
+			{
+                return true;
+			}
+		}
+	</script>
+
+    <nav id="navbar" style="margin-top: 5vw;">
+        <input type="checkbox" id="check">
+        <label for="check">
+            <i class="fa fa-bars" id="btn"></i>
+            <i class="fa fa-times" id="cancel"></i>
+        </label>
+        <ul id="menu">
+            <li><a href="{{ url_for('index') }}" class="link-light">Home</a></li>
+            <li><a href="/#a" class="link-light">About</a></li>
+            <li><a href="/#i" class="link-light">Instructions</a></li>
+            <li><a href="/#c" class="link-light">Contact</a></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn"
+                        style="font-family: 'Poppins',sans-serif;letter-spacing: 3px;">UPLOAD</button>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('indexform') }}">TEXT</a>
+                        <a href="{{ url_for('indexform') }}">PDF</a>
+                        <a href="{{ url_for('indexform') }}">IMAGE</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+       
+    <div class="form-container">
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data" class="form-card" id="myform">
+        <progress id="progressBar" value="0" max="100"></progress>
+                    <div class="step" id="step1">
+                            <p class="text">Upload the file</p>
+                                <input type="file" class="fbuttonn" id="file" oninput="return fileValidation()"  name="uploaded_file" accept=".pdf,.txt,.jpg,.jpeg,.png,"><br>
+                                <label for="sep" class="delimiter" >Delimiter : </label>&nbsp;
+                                <input type="text" class="name" name="sep" oninput="location.href='#pre';"><br>
+                        <div class="button-container">
+                        <button id="nextBtn1" class="nextBtn" type="button">Next</button>
+                        </div>
+                    </div>
+                    <div class="step" id="step2">
+                            <p class="text">PREPROCESSING</p>  
+                                <div class="checkbox-group">                                                                         
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="punctuation" id="1" name="preprocessingg" ><span class="checkmark"></span> Punctuation Removal<br></input></label>                                                      
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="whitespace" id="2" name="preprocessingg" ><span class="checkmark"></span> Whitespace Wemoval<br></input></label>                             
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="roman" id="3" name="preprocessingg" > <span class="checkmark"></span> Roman Removal<br></input></label>                                                        
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="redun" id="4" name="preprocessingg" ><span class="checkmark"></span> Redundent Removal<br></input></label>                            
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="num" id="5" name="preprocessingg" ><span class="checkmark"></span> Num Removal<br></input></label> 
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="stopword" id="6" name="preprocessingg" ><span class="checkmark"></span> Stopword Removal<br></input></label>                             
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="lemma" id="7" name="preprocessingg"><span class="checkmark"></span> Lemmatization<br></input></label> 
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="stem" id="8" name="preprocessingg"><span class="checkmark"></span> Stemming<br></input></label>
+                                </div>     
+                        <div class="button-container">
+                        <button id="prevBtn2" class="prevBtn" type="button">Back</button> 
+                        <button id="nextBtn2" class="nextBtn" type="button">Next</button>
+                        </div>
+                    </div>
+                    <div class="step" id="step3">
+                            <p class="text">WORD-EMBEDDING</p>
+                            <div class="radio-group"> 
+                                <label class="radio"><input type="radio" value="TFIDF" name="word_embedding"><span class="checkmarkk"></span> Term Frequency Inverse Document Frequency</input></label>
+                                <label class="radio"><input type="radio" value="COUNTVECT" name="word_embedding"><span class="checkmarkk"></span> Count Vectorizer</input></label>
+                                <label class="radio"><input type="radio" value="WORDTOVECCOS" name="word_embedding"><span class="checkmarkk"></span> Word 2 Vec Customized</input></label>
+                                <label class="radio"><input type="radio" value="WORDTOVECGOG" name="word_embedding"><span class="checkmarkk"></span> Word 2 vec Pretrained</input></label>
+                                <label class="radio"><input type="radio" value="FAST-TEXT" name="word_embedding"><span class="checkmarkk"></span> FAST-TEXT</input></label>
+                                <label class="radio"><input type="radio" value="GLOVE" name="word_embedding"><span class="checkmarkk"></span> Global Vectorizer</input></label>
+                            </div>
+                        <div class="button-container">
+                        <button id="prevBtn2" class="prevBtn" type="button">Back</button>
+                        <button id="nextBtn2" class="nextBtn" type="button">Next</button>
+                        </div>
+                    </div>
+                    <div class="step" id="step4">
+                            <p class="text">CLASSIFICATION</p> 
+                            <div class="Class-group">                           
+                                <label class="radioo"><input type="radio" value="RANDOM_CL" name="classifier"><span class="checkmarkkk"></span> Random Forest<br></input></label>                            
+                                <label class="radioo"><input type="radio" value="DECISION_CL" name="classifier"><span class="checkmarkkk"></span> Decision Tree<br></input></label>                             
+                                <label class="radioo"><input type="radio" value="KNN_CL" name="classifier"><span class="checkmarkkk"></span> K Nearest Neighbor<br></input></label> 
+                                <label class="radioo"><input type="radio" value="LOGISTIC_REGRESSION_CL" name="classifier"><span class="checkmarkkk"></span> Logistic Regression<br></input></label> 
+                                <label class="radioo"><input type="radio" value="SVC_CL" name="classifier"><span class="checkmarkkk"></span> Support Vector Machine<br></input></label> 
+                                <label class="radioo"><input type="radio" value="STACKING_CL" name="classifier"><span class="checkmarkkk"></span> Stacking<br></input></label> 
+                                <!-- <label class="radioo"><input type="radio" value="VOTING_CL" name="classifier"><span class="checkmarkkk"> VOTING</span><br></input></label>  -->
+                            </div>
+                        <div class="button-container">
+                        <button id="prevBtn3" class="prevBtn" type="button">Back</button>
+                        <button id="submitBtn" class="submit" type="submit" >Submit</button>
+                        </div>
+                    </div>
+        </form>
+    </div>
+    <script>
+		$(document).ready(function() 
+        {
+			var currentStep = 1;
+			showStep(currentStep);
+			$('.nextBtn').click(function() {
+				currentStep++;
+				showStep(currentStep);
+			});
+
+			$('.prevBtn').click(function() {
+				currentStep--;
+				showStep(currentStep);
+			});
+			function showStep(step) 
+            {
+                $('.step').hide();
+                $('#step' + step).show();
+
+                if (step == 1) {
+                    $('.prevBtn').hide();
+                } else {
+                    $('.prevBtn').show();
+                }
+
+                if (step == $('.step').length) {
+                    $('.nextBtn').hide();
+                    $('#submitBtn').show();
+                } else {
+                    $('.nextBtn').show();
+                    $('#submitBtn').hide();
+                }
+
+                var progressBar = document.getElementById('progressBar');
+                var percent = (step - 1) / ($('.step').length - 1) * 100;
+                progressBar.value = percent;
+			}
+		});
+	</script>
+</body>
+
+</html>
