@@ -1,0 +1,8 @@
+README.md
+setup.py
+Preparing_AI_Ready_Datasets.egg-info/PKG-INFO
+Preparing_AI_Ready_Datasets.egg-info/SOURCES.txt
+Preparing_AI_Ready_Datasets.egg-info/dependency_links.txt
+Preparing_AI_Ready_Datasets.egg-info/requires.txt
+Preparing_AI_Ready_Datasets.egg-info/top_level.txt
+src/__init__.py
