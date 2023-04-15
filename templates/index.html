@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Upload page</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -407,7 +408,7 @@
     </nav>
        
     <div class="form-container">
-    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data" class="form-card" id="myform">
+    <form action="{{ url_for('predict')}}" method="POST" enctype="multipart/form-data" class="form-card" id="myform">
         <progress id="progressBar" value="0" max="100"></progress>
                     <div class="step" id="step1">
                             <p class="text">Upload the file</p>
@@ -419,17 +420,19 @@
                         </div>
                     </div>
                     <div class="step" id="step2">
+                        
                             <p class="text">PREPROCESSING</p>  
-                                <div class="checkbox-group">                                                                         
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="punctuation" id="1" name="preprocessingg" ><span class="checkmark"></span> Punctuation Removal<br></input></label>                                                      
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="whitespace" id="2" name="preprocessingg" ><span class="checkmark"></span> Whitespace Wemoval<br></input></label>                             
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="roman" id="3" name="preprocessingg" > <span class="checkmark"></span> Roman Removal<br></input></label>                                                        
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="redun" id="4" name="preprocessingg" ><span class="checkmark"></span> Redundent Removal<br></input></label>                            
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="num" id="5" name="preprocessingg" ><span class="checkmark"></span> Num Removal<br></input></label> 
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="stopword" id="6" name="preprocessingg" ><span class="checkmark"></span> Stopword Removal<br></input></label>                             
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="lemma" id="7" name="preprocessingg"><span class="checkmark"></span> Lemmatization<br></input></label> 
-                                <label class="checkbox"><input type="checkbox" class="checkbox" value="stem" id="8" name="preprocessingg"><span class="checkmark"></span> Stemming<br></input></label>
-                                </div>     
+                                <div class="checkbox-group">                                                                       
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="punctuation_removal" id="1" name="preprocessing" ><span class="checkmark"></span> Punctuation Removal<br></input></label>                                           
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="lower_case" id="2" name="preprocessing" ><span class="checkmark"></span> Whitespace Wemoval<br></input></label>                             
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="remove_romans" id="3" name="preprocessing" > <span class="checkmark"></span> Roman Removal<br></input></label>                                                        
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="redunable_words" id="4" name="preprocessing" ><span class="checkmark"></span> Redundent Removal<br></input></label>                            
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="remove_numbers" id="5" name="preprocessing" ><span class="checkmark"></span> Num Removal<br></input></label> 
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="stopword_removal" id="6" name="preprocessing" ><span class="checkmark"></span> Stopword Removal<br></input></label>                             
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="lemmatization" id="7" name="preprocessing"><span class="checkmark"></span> Lemmatization<br></input></label> 
+                                <label class="checkbox"><input type="checkbox" class="checkbox" value="stemming" id="8" name="preprocessing"><span class="checkmark"></span> Stemming<br></input></label>
+                            </div>     
+                        
                         <div class="button-container">
                         <button id="prevBtn2" class="prevBtn" type="button">Back</button> 
                         <button id="nextBtn2" class="nextBtn" type="button">Next</button>
@@ -453,7 +456,7 @@
                     <div class="step" id="step4">
                             <p class="text">CLASSIFICATION</p> 
                             <div class="Class-group">                           
-                                <label class="radioo"><input type="radio" value="RANDOM_CL" name="classifier"><span class="checkmarkkk"></span> Random Forest<br></input></label>                            
+                                <label class="radioo"><input type="radio" value="random_forest" name="classifier"><span class="checkmarkkk"></span> Random Forest<br></input></label>                            
                                 <label class="radioo"><input type="radio" value="DECISION_CL" name="classifier"><span class="checkmarkkk"></span> Decision Tree<br></input></label>                             
                                 <label class="radioo"><input type="radio" value="KNN_CL" name="classifier"><span class="checkmarkkk"></span> K Nearest Neighbor<br></input></label> 
                                 <label class="radioo"><input type="radio" value="LOGISTIC_REGRESSION_CL" name="classifier"><span class="checkmarkkk"></span> Logistic Regression<br></input></label> 
@@ -463,7 +466,7 @@
                             </div>
                         <div class="button-container">
                         <button id="prevBtn3" class="prevBtn" type="button">Back</button>
-                        <button id="submitBtn" class="submit" type="submit" >Submit</button>
+                        <button id="submitBtn" class="submit" type="submit" value="submit">Submit</button>
                         </div>
                     </div>
         </form>

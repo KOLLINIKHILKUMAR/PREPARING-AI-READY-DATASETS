@@ -1,7 +1,11 @@
 pandas
-sklearn
+Flask
+scikit-learn
 matplotlib
 numpy
 seaborn
 nltk
--e .
+gensim
+pytesseract
+django
+# -e .
